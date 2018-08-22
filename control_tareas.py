@@ -64,6 +64,7 @@ def set_tarea():
 				
 		
 		if estado == "EN CURSO":
+			#ACTUALIZA ESTADO DEL HISTORIAL
 			base()
 			cur = db.cursor()
 			fecha = str(time.strftime("20%y/%m/%d %X"))
@@ -80,7 +81,26 @@ def set_tarea():
 				db.rollback()			
 			db.close()
 			
+			#ACTUALIZA PROCESO OT
+			base()
+			cur = db.cursor()
+			sql = "update proceso_ot set estado = 'TERMINADO' where id_detalle = %s and id_proceso = %s and num_proc = %s"
+			val = (id_detalle,id_proceso,num_proceso)
 			
+			try:
+				cur.execute(sql,val)
+				db.commit()
+			except:
+				# Rollback in case there is any error
+				print("ERROR")
+				db.rollback()			
+			db.close()
+			
+			#ACTUALIZA ESTACIÓN
+			base()
+			cur = db.cursor()
+			sql = "update estacion set estado = 'LIBRE' where id_estacion = %s "
+			val = (id_estacion)
 
 	elif origen == "USUARIOS":
 		print("ORIGEN")
