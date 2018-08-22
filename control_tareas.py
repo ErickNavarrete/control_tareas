@@ -61,12 +61,7 @@ def set_tarea():
 				num_proceso = row[3]
 				
 		if estado == "EN CURSO":
-			ahora = datetime.datetime.now()
-			print(ahora.hour)
-			print(ahora.minute)
-			print(ahora.year)
-			print(ahora.day)
-			print(ahora.month)
+			print(time.strftime("%c"))
 			
 
 	elif origen == "USUARIOS":
