@@ -61,7 +61,11 @@ def set_tarea():
 				num_proceso = row[3]
 				
 		if estado == "EN CURSO":
-			print(time.strftime("20%y/%m/%d %X"))
+			base()
+			cur = db.cursor()
+			fecha = time.strftime("20%y/%m/%d %X")
+			cur.execute(" update historial set fecha_t = "+ fecha +" , estado = 'COMPLETADO' where id_detalle = '" + id_detalle + "' and id_proceso = '" + id_proceso + "' and estado = 'EN CURSO' ")
+
 			
 
 	elif origen == "USUARIOS":
