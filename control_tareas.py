@@ -12,7 +12,7 @@ global db
 
 def base():
 	global db
-	db = MySQLdb.connect(host="ave-la.dynns.com",
+	db = MySQLdb.connect(host="192.168.15.6",
 			     user="root",
 			     passwd="ZMalqp10",
 			     db="tablero_dmm2")
