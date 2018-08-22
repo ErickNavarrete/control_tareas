@@ -54,7 +54,10 @@ def set_tarea():
 			cur = db.cursor()
 			cur.execute("select id_proceso, id_estacion, estado, num_proc from proceso_ot where id_detalle = " + id_detalle + " and estado <> 'EN CURSO' and estado <> 'TERMINADO' order by num_proc desc ")
 			for row in cur.fetchall():
-				print (row)
+				id_proceso = row[0]
+				id_estacion = row[1]
+				estado = row[2]
+				num_proceso = row[3]
 
 	elif origen == "USUARIOS":
 		print("ORIGEN")
