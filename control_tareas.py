@@ -19,13 +19,6 @@ def base():
 			     passwd="ZMalqp10",
 			     db="tablero_dmm2")
 				 
-def base2():
-	global mydb
-	mydb = mysql.connector.connect(  host="192.168.15.14",
-									 user="root",
-									 passwd="ZMalqp10",
-									 db="tablero_dmm2")
-
 def get_event():
 	global id_detalle, id_ot, id_usuario, origen
 
@@ -47,7 +40,6 @@ def set_tarea():
 
 	if origen == "OT":
 		base()
-
 		cur = db.cursor()
 		cur.execute("SELECT ID_PROCESO, ID_ESTACION, ESTADO, NUM_PROC FROM PROCESO_OT WHERE ID_DETALLE = " + id_detalle + " AND ESTADO = 'EN CURSO' ORDER BY NUM_PROC")
 
@@ -71,12 +63,20 @@ def set_tarea():
 			db.close()
 				
 		if estado == "EN CURSO":
-			base2()
-			mycursor = mydb.cursor()
-			sql = "update historial set estado = 'PRUEBA' where id_hist = '1' "
-			mycursor.execute(sql)
-			mydb.commit()
-			print(mycursor.rowcount, "record(s) affected")
+			base()
+			cur = db.cursor()
+			
+			try:
+			   # Execute the SQL command
+			   cur.execute("update historial set estado = 'TERMINADO' where id_detalle = " + str(id_detalle)) + " and estado = 'EN CURSO' ")
+			   # Commit your changes in the database
+			   db.commit()
+			except:
+			   # Rollback in case there is any error
+			   db.rollback()
+			
+			
+			db.close()
 			fecha = str(time.strftime("20%y/%m/%d %X"))
 			
 
