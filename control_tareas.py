@@ -73,7 +73,7 @@ def set_tarea():
 		if estado == "EN CURSO":
 			base2()
 			mycursor = mydb.cursor()
-			sql = "update historial set 'PRUEBA' where id_hist = '1' "
+			sql = "update historial set estado = 'PRUEBA' where id_hist = '1' "
 			mycursor.execute(sql)
 			mydb.commit()
 			print(mycursor.rowcount, "record(s) affected")
