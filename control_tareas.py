@@ -21,7 +21,7 @@ def base():
 				 
 def base2():
 	global mydb
-	mydb = MySQL.connector.connect(  host="192.168.15.14",
+	mydb = mysql.connector.connect(  host="192.168.15.14",
 									 user="root",
 									 passwd="ZMalqp10",
 									 db="tablero_dmm2")
