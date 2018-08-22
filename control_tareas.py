@@ -65,13 +65,7 @@ def set_tarea():
 			base()
 			cur = db.cursor()
 			fecha = str(time.strftime("20%y/%m/%d %X"))
-			print(" update historial set fecha_t = '"+ fecha +"' , estado = 'Otro' where id_detalle = " + str(id_detalle) + " and id_proceso = " + str(id_proceso) + " and estado = 'COMPLETADO' ")
-			cur.execute(" update historial set estado = 'Otro' where id_detalle = " + str(id_detalle) + " and id_proceso = " + str(id_proceso) + " and estado = 'COMPLETADO' ")
-			cur.commit()
-
-			print(cur.rowcount, "record(s) affected")
-			
-
+			cur.execute(" update historial set estado = 'Otro' where id_hist = '1' ")
 			
 
 	elif origen == "USUARIOS":
