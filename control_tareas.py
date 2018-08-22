@@ -66,12 +66,9 @@ def set_tarea():
 			base()
 			cur = db.cursor()
 			
-			try:
-				cur.execute("update historial set estado = 'TERMINADO' where estado = 'EN CURSO' and id_detalle = " + str(id_detalle)) )
-				db.commit()
-			except:
-				# Rollback in case there is any error
-				db.rollback()			
+			cur.execute("update historial set estado = 'TERMINADO' where estado = 'EN CURSO' and id_detalle = " + str(id_detalle)) )
+			db.commit()
+		
 			db.close()
 			fecha = str(time.strftime("20%y/%m/%d %X"))
 			
