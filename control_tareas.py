@@ -59,6 +59,7 @@ def set_tarea():
 				id_estacion = row[1]
 				estado = row[2]
 				num_proceso = row[3]
+			db.close()
 				
 		if estado == "EN CURSO":
 			base()
