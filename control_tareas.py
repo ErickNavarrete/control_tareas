@@ -33,7 +33,7 @@ def get_event():
 
 def set_tarea():
 	global id_detalle, id_ot, id_usuario, origen, db
-	bandera = false
+	bandera =  "False"
 
 	if origen == "OT":
 		base()
@@ -46,10 +46,15 @@ def set_tarea():
 			id_estacion = row[1]
 			estado = row[2]
 			num_proceso = row[3]
-			bandera = true
+			bandera = "True"
 		db.close()
 
-		
+		if bandera == "False":
+			base()
+			cur = db.cursor()
+			cur.execute("select id_proceso, id_estacion, estado, num_proc from proceso_ot where id_detalle = " + id_detalle + " and estado <> 'EN CURSO' and estado <> 'TERMINADO' order by num_proc desc ")
+			for row in cur.fetchall():
+				print (row)
 
 	elif origen == "USUARIOS":
 		print("ORIGEN")
