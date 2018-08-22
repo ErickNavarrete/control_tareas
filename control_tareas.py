@@ -1,6 +1,6 @@
 import time
 import MySQLdb
-import MySQL.connector
+import mysql.connector
 
 
 #VARIABLES GLOBALES
