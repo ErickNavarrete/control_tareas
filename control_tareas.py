@@ -1,6 +1,7 @@
 import time
 import MySQLdb
 
+
 #VARIABLES GLOBALES
 global id_usuario
 global id_detalle
@@ -58,6 +59,15 @@ def set_tarea():
 				id_estacion = row[1]
 				estado = row[2]
 				num_proceso = row[3]
+				
+		if estado = "EN CURSO":
+			ahora = datetime.datetime.now()
+			print(ahora.hour)
+			print(ahora.minute)
+			print(ahora.year)
+			print(ahora.day)
+			print(ahora.month)
+			
 
 	elif origen == "USUARIOS":
 		print("ORIGEN")
