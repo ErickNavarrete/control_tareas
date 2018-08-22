@@ -60,7 +60,7 @@ def set_tarea():
 				estado = row[2]
 				num_proceso = row[3]
 				
-		if estado = "EN CURSO":
+		if estado == "EN CURSO":
 			ahora = datetime.datetime.now()
 			print(ahora.hour)
 			print(ahora.minute)
