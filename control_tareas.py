@@ -61,7 +61,7 @@ def set_tarea():
 				num_proceso = row[3]
 				
 		if estado == "EN CURSO":
-			print(time.strftime("%s %X"))
+			print(time.strftime("20%y/%m/%d %X"))
 			
 
 	elif origen == "USUARIOS":
