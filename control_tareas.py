@@ -1,5 +1,6 @@
 import time
 import MySQLdb
+import MySQL.connector
 
 
 #VARIABLES GLOBALES
@@ -7,6 +8,7 @@ global id_usuario
 global id_detalle
 global id_ot
 global origen
+global mydb
 
 global db
 
@@ -16,6 +18,13 @@ def base():
 			     user="root",
 			     passwd="ZMalqp10",
 			     db="tablero_dmm2")
+				 
+def base2():
+	global mydb
+	mydb = MySQL.connector.connect(  host="192.168.15.14",
+									 user="root",
+									 passwd="ZMalqp10",
+									 db="tablero_dmm2")
 
 def get_event():
 	global id_detalle, id_ot, id_usuario, origen
@@ -33,7 +42,7 @@ def get_event():
 		set_tarea()
 
 def set_tarea():
-	global id_detalle, id_ot, id_usuario, origen, db
+	global id_detalle, id_ot, id_usuario, origen, db, mydb
 	bandera =  "False"
 
 	if origen == "OT":
@@ -62,10 +71,13 @@ def set_tarea():
 			db.close()
 				
 		if estado == "EN CURSO":
-			base()
-			cur = db.cursor()
+			base2()
+			mycursor = mydb.cursor()
+			sql = "update historial set 'PRUEBA' where id_hist = '1' "
+			mycursor.execute(sql)
+			mydb.commit()
+			print(mycursor.rowcount, "record(s) affected")
 			fecha = str(time.strftime("20%y/%m/%d %X"))
-			cur.execute(" update historial set estado = 'Otro' where id_hist = '1' ")
 			
 
 	elif origen == "USUARIOS":
