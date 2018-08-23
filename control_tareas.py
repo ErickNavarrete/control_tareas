@@ -24,7 +24,8 @@ def base():
 def get_event():
 	global id_detalle, id_ot, id_usuario, origen
 
-	codigo =raw_input()
+	codigo = raw_input()
+	lcd.GPIO.cleanup()
 	lcd.lcd_init()
 	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
 	lcd.lcd_string("BIENVENIDO",2)
