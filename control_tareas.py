@@ -20,7 +20,7 @@ def mensajes_lcd(mensaje1,mensaje2):
 	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
 	lcd.lcd_string(mensaje2,2)
 
-	time.sleep(30)
+	time.sleep(15)
 	
 	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
 	lcd.lcd_string("BIENVENIDO",2)
@@ -78,8 +78,7 @@ def set_tarea():
 				estado = row[2]
 				num_proceso = row[3]
 			db.close()
-			
-						
+									
 		if estado == "EN CURSO":
 			#ACTUALIZA ESTADO DEL HISTORIAL
 			base()
@@ -117,7 +116,7 @@ def set_tarea():
 			base()
 			cur = db.cursor()
 			sql = "update estacion set estado = 'LIBRE' where id_estacion = %s "
-			val = (id_estacion)
+			val = id_estacion
 			
 			try:
 				cur.execute(sql,val)
@@ -160,6 +159,7 @@ def set_tarea():
 			
 		elif estado == "TERMINADO":
 			mensajes_lcd("DETALLE","TERMINADO")
+		
 		else:
 			#CONSULTAMOS SI LA ESTACION ESTA LIBRE PARA COMENZAR EL PROCESO
 			base()
@@ -212,7 +212,7 @@ def set_tarea():
 			cur = db.cursor()
 			
 			sql = " update estacion set estado = 'OCUPADO' where id_estacion = %s "
-			val = (id_estacion)
+			val = id_estacion
 			 
 			try:
 				cur.execute(sql,val)
