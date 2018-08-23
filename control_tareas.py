@@ -181,7 +181,7 @@ def set_tarea():
 				db.commit()
 			except:
 				# Rollback in case there is any error
-				print("ERROR")
+				print("ERROR 5")
 				db.rollback()			
 			db.close()
 			
@@ -197,7 +197,7 @@ def set_tarea():
 				db.commit()
 			except:
 				# Rollback in case there is any error
-				print("ERROR")
+				print("ERROR 6")
 				db.rollback()			
 			db.close()
 			
