@@ -1,7 +1,9 @@
 import time
 import MySQLdb
+import os
 import mysql.connector
-
+os.chdir('/home/pi/control_tareas/')
+import lcd
 
 #VARIABLES GLOBALES
 global id_usuario
@@ -23,6 +25,9 @@ def get_event():
 	global id_detalle, id_ot, id_usuario, origen
 
 	codigo =raw_input()
+	lcd.lcd_init()
+	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
+	lcd.lcd_string("BIENVENIDO",2)
 
 	#DETERMINAMOS SI ES USUARIO U OT
 	if len(codigo)  > 0:
@@ -191,7 +196,7 @@ def set_tarea():
 			base()
 			cur = db.cursor()
 			
-			sql = " update estacion set estado = 'OCUPADO' where id_estacion = '%s "
+			sql = " update estacion set estado = 'OCUPADO' where id_estacion = %s "
 			val = (id_estacion)
 			 
 			try:
@@ -202,8 +207,7 @@ def set_tarea():
 				print("ERROR 6")
 				db.rollback()			
 			db.close()
-			
-		
+				
 	elif origen == "USUARIOS":
 		print("ORIGEN")
 
