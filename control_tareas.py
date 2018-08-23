@@ -123,7 +123,7 @@ def set_tarea():
 					estado_t = "False"					
 			db.close()
 			
-			if estado_t = "True":
+			if estado_t == "True":
 				#ACTUALIZA PROCESO OT
 				base()
 				cur = db.cursor()
