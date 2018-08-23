@@ -147,7 +147,7 @@ def set_tarea():
 			try:
 				cur.execute(sql,val)
 			except:
-			
+				print("")
 			for row in cur.fetchall():
 				if row[0] == "OCUPADO":
 				
