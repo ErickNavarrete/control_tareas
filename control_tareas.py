@@ -148,7 +148,7 @@ def set_tarea():
 			cur.execute(sql,val)
 			
 			for row in cur.fetchall():
-				if row[0] = "OCUPADO":
+				if row[0] == "OCUPADO":
 					print("ESTACIÓN EN USO")
 					return			
 			db.close()
