@@ -14,6 +14,19 @@ global mydb
 
 global db
 
+def mensajes_lcd(mensaje1,mensaje2):
+	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
+	lcd.lcd_string(mensaje1,2)
+	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
+	lcd.lcd_string(mensaje2,2)
+
+	time.sleep(10)
+	
+	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
+	lcd.lcd_string("BIENVENIDO",2)
+	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
+	lcd.lcd_string("",2)
+	
 def base():
 	global db
 	db = MySQLdb.connect(host="192.168.15.14",
@@ -143,8 +156,7 @@ def set_tarea():
 				db.close()
 		
 		elif estado == "TERMINADO":
-			lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
-			lcd.lcd_string("DETALLE TERMINADO",2)
+			mensajes_lcd("DETALLE","TERMINADO")
 		else:
 			#CONSULTAMOS SI LA ESTACION ESTA LIBRE PARA COMENZAR EL PROCESO
 			base()
