@@ -20,7 +20,7 @@ def mensajes_lcd(mensaje1,mensaje2):
 	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
 	lcd.lcd_string(mensaje2,2)
 
-	time.sleep(10)
+	time.sleep(30)
 	
 	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
 	lcd.lcd_string("BIENVENIDO",2)
@@ -113,6 +113,7 @@ def set_tarea():
 				db.rollback()			
 			db.close()
 			
+			#ACTUALIZA ESTACION
 			base()
 			cur = db.cursor()
 			sql = "update estacion set estado = 'LIBRE' where id_estacion = %s "
@@ -155,6 +156,8 @@ def set_tarea():
 					db.rollback()			
 				db.close()
 		
+			mensajes_lcd("TAREA","TERMINADA")
+			
 		elif estado == "TERMINADO":
 			mensajes_lcd("DETALLE","TERMINADO")
 		else:
@@ -219,9 +222,11 @@ def set_tarea():
 				print("ERROR 6")
 				db.rollback()			
 			db.close()
-				
+
+			mensajes_lcd("TAREA","EN CURSO")
+			
 	elif origen == "USUARIOS":
-		print("ORIGEN")
+		mensajes_lcd("USUARIO","REGISTRADO")
 
 
 if __name__=="__main__":
