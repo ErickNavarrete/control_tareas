@@ -62,8 +62,7 @@ def set_tarea():
 				estado = row[2]
 				num_proceso = row[3]
 			db.close()
-				
-		
+						
 		if estado == "EN CURSO":
 			#ACTUALIZA ESTADO DEL HISTORIAL
 			base()
@@ -78,7 +77,7 @@ def set_tarea():
 				db.commit()
 			except:
 				# Rollback in case there is any error
-				print("ERROR")
+				print("ERROR 1")
 				db.rollback()			
 			db.close()
 			
@@ -93,7 +92,7 @@ def set_tarea():
 				db.commit()
 			except:
 				# Rollback in case there is any error
-				print("ERROR")
+				print("ERROR 2")
 				db.rollback()			
 			db.close()
 			
@@ -107,7 +106,7 @@ def set_tarea():
 				db.commit()
 			except:
 				# Rollback in case there is any error
-				print("ERROR")
+				print("ERROR 3")
 				db.rollback()			
 			db.close()
 			
@@ -135,7 +134,7 @@ def set_tarea():
 					db.commit()
 				except:
 					# Rollback in case there is any error
-					print("ERROR")
+					print("ERROR 4")
 					db.rollback()			
 				db.close()
 
