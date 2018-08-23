@@ -174,7 +174,7 @@ def set_tarea():
 			cur = db.cursor()
 			
 			sql = " update proceso_ot set estado = 'EN CURSO' where id_detalle = %s and id_proceso = %s and num_proc = %s "
-			val = (id_detalle,id_proceso,num_proc)
+			val = (id_detalle,id_proceso,num_proceso)
 			 
 			try:
 				cur.execute(sql,val)
