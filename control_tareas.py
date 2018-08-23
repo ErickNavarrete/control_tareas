@@ -62,6 +62,8 @@ def set_tarea():
 				estado = row[2]
 				num_proceso = row[3]
 			db.close()
+			
+		print(id_estacion)
 						
 		if estado == "EN CURSO":
 			#ACTUALIZA ESTADO DEL HISTORIAL
