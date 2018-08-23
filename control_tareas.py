@@ -25,10 +25,6 @@ def get_event():
 	global id_detalle, id_ot, id_usuario, origen
 
 	codigo = raw_input()
-	lcd.GPIO.cleanup()
-	lcd.lcd_init()
-	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
-	lcd.lcd_string("BIENVENIDO",2)
 
 	#DETERMINAMOS SI ES USUARIO U OT
 	if len(codigo)  > 0:
@@ -214,6 +210,11 @@ def set_tarea():
 
 
 if __name__=="__main__":
+	lcd.GPIO.cleanup()
+	lcd.lcd_init()
+	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
+	lcd.lcd_string("BIENVENIDO",2)
+
 	try:
 		while True:
 			get_event()
