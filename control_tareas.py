@@ -97,7 +97,6 @@ def set_tarea():
 				db.rollback()			
 			db.close()
 			
-			#ACTUALIZA ESTACIÓN
 			base()
 			cur = db.cursor()
 			sql = "update estacion set estado = 'LIBRE' where id_estacion = %s "
