@@ -143,7 +143,7 @@ def set_tarea():
 			base()
 			cur = db.cursor()
 			sql = " "
-			cur.execute("select estado from estacion where id_estacion = "+ id_estacion)
+			cur.execute("select estado from estacion where id_estacion = " + str(id_estacion))
 			
 			for row in cur.fetchall():
 				if row[0] == "OCUPADO":
