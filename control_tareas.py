@@ -40,6 +40,7 @@ def set_tarea():
 	global id_detalle, id_ot, id_usuario, origen, db, mydb
 	bandera =  "False"
 	estado_t = "True"
+	estado = "TERMINADO"
 	
 	if origen == "OT":
 		base()
@@ -140,7 +141,10 @@ def set_tarea():
 					print("ERROR 4")
 					db.rollback()			
 				db.close()
-
+		
+		elif estado == "TERMINADO"
+			lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
+			lcd.lcd_string("DETALLE TERMINADO",2)
 		else:
 			#CONSULTAMOS SI LA ESTACION ESTA LIBRE PARA COMENZAR EL PROCESO
 			base()
