@@ -142,12 +142,9 @@ def set_tarea():
 			#CONSULTAMOS SI LA ESTACION ESTA LIBRE PARA COMENZAR EL PROCESO
 			base()
 			cur = db.cursor()
-			sql = " select estado from estacion where id_estacion = %s "
-			val = (id_estacion)
-			try:
-				cur.execute(sql,val)
-			except:
-				print("")
+			sql = " "
+			cur.execute("select estado from estacion where id_estacion = "+ id_estacion)
+			
 			for row in cur.fetchall():
 				if row[0] == "OCUPADO":
 				
