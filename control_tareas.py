@@ -144,7 +144,9 @@ def set_tarea():
 			cur = db.cursor()
 			sql = " select estado from estacion where id_estacion = %s "
 			val = (id_estacion)
-			cur.execute(sql,val)
+			try:
+				cur.execute(sql,val)
+			except:
 			
 			for row in cur.fetchall():
 				if row[0] == "OCUPADO":
