@@ -155,10 +155,10 @@ def set_tarea():
 					db.rollback()			
 				db.close()
 		
-			mensajes_lcd("TAREA","TERMINADA:","BIENVENIDO","ESPERANDO USUARIO:")
+			mensajes_lcd("TAREA","TERMINADA:","ESPERANDO","USUARIO:")
 			
 		elif estado == "TERMINADO":
-			mensajes_lcd("DETALLE","TERMINADO","BIENVENIDO","ESPERANDO USUARIO:")
+			mensajes_lcd("DETALLE","TERMINADO","ESPERANDO","USUARIO:")
 		
 		else:
 			#CONSULTAMOS SI LA ESTACION ESTA LIBRE PARA COMENZAR EL PROCESO
@@ -222,16 +222,16 @@ def set_tarea():
 				db.rollback()			
 			db.close()
 
-			mensajes_lcd("TAREA","EN CURSO","BIENVENIDO","ESPERANDO USUARIO:")
+			mensajes_lcd("TAREA","EN CURSO","ESPERANDO","USUARIO:")
 			
 	elif origen == "USUARIOS":
-		mensajes_lcd("USUARIO","IDENTIFICADO","ESPERANDO DETALLE:","")
+		mensajes_lcd("USUARIO","IDENTIFICADO","ESPERANDO","DETALLE:")
 
 
 if __name__=="__main__":
 	lcd.GPIO.cleanup()
 	lcd.lcd_init()
-	mensajes_lcd("BIENVENIDO","ESPERANDO USUARIO:","BIENVENIDO","ESPERANDO USUARIO:")
+	mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO:")
 
 	try:
 		while True:
