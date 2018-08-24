@@ -25,7 +25,7 @@ def mensajes_lcd(mensaje1,mensaje2):
 	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
 	lcd.lcd_string("BIENVENIDO",2)
 	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
-	lcd.lcd_string("",2)
+	lcd.lcd_string("ESPERANDO OT:",2)
 	
 def base():
 	global db
@@ -115,8 +115,8 @@ def set_tarea():
 			#ACTUALIZA ESTACION
 			base()
 			cur = db.cursor()
-			sql = "update estacion set estado = 'LIBRE' where id_estacion = %s "
-			val = id_estacion
+			sql = "update estacion set estado = %s where id_estacion = %s "
+			val = ('LIBRE',id_estacion)
 			
 			try:
 				cur.execute(sql,val)
@@ -211,8 +211,8 @@ def set_tarea():
 			base()
 			cur = db.cursor()
 			
-			sql = " update estacion set estado = 'OCUPADO' where id_estacion = %s "
-			val = id_estacion
+			sql = " update estacion set estado = %s where id_estacion = %s "
+			val = ('OCUPADO',id_estacion)
 			 
 			try:
 				cur.execute(sql,val)
