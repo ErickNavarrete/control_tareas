@@ -20,7 +20,7 @@ def mensajes_lcd(mensaje1,mensaje2, mensaje3, mensaje4):
 	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
 	lcd.lcd_string(mensaje2,2)
 
-	time.sleep(5)
+	time.sleep(20)
 	
 	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
 	lcd.lcd_string(mensaje3,2)
