@@ -14,7 +14,7 @@ global mydb
 
 global db
 
-def mensajes_lcd(mensaje1,mensaje2):
+def mensajes_lcd(mensaje1,mensaje2, mensaje3, mensaje4):
 	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
 	lcd.lcd_string(mensaje1,2)
 	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
@@ -23,9 +23,9 @@ def mensajes_lcd(mensaje1,mensaje2):
 	time.sleep(5)
 	
 	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
-	lcd.lcd_string("BIENVENIDO",2)
+	lcd.lcd_string(mensaje3,2)
 	lcd.lcd_byte(lcd.LCD_LINE_2,lcd.LCD_CMD)
-	lcd.lcd_string("ESPERANDO OT:",2)
+	lcd.lcd_string(mensaje4,2)
 	
 def base():
 	global db
@@ -155,10 +155,10 @@ def set_tarea():
 					db.rollback()			
 				db.close()
 		
-			mensajes_lcd("TAREA","TERMINADA")
+			mensajes_lcd("TAREA","TERMINADA:","BIENVENIDO","ESPERANDO USUARIO:")
 			
 		elif estado == "TERMINADO":
-			mensajes_lcd("DETALLE","TERMINADO")
+			mensajes_lcd("DETALLE","TERMINADO","BIENVENIDO","ESPERANDO USUARIO:")
 		
 		else:
 			#CONSULTAMOS SI LA ESTACION ESTA LIBRE PARA COMENZAR EL PROCESO
@@ -169,8 +169,7 @@ def set_tarea():
 			
 			for row in cur.fetchall():
 				if row[0] == "OCUPADO":
-				
-					print("ESTACION EN USO")
+					mensajes_lcd("ESTACION","OCUPADA","HABLE CON EL","ADMINISTRADOR")
 					return			
 			db.close()
 			
@@ -223,17 +222,16 @@ def set_tarea():
 				db.rollback()			
 			db.close()
 
-			mensajes_lcd("TAREA","EN CURSO")
+			mensajes_lcd("TAREA","EN CURSO","BIENVENIDO","ESPERANDO USUARIO:")
 			
 	elif origen == "USUARIOS":
-		mensajes_lcd("USUARIO","REGISTRADO")
+		mensajes_lcd("USUARIO","IDENTIFICADO","ESPERANDO DETALLE:","")
 
 
 if __name__=="__main__":
 	lcd.GPIO.cleanup()
 	lcd.lcd_init()
-	lcd.lcd_byte(lcd.LCD_LINE_1,lcd.LCD_CMD)
-	lcd.lcd_string("BIENVENIDO",2)
+	mensajes_lcd("BIENVENIDO","ESPERANDO USUARIO:","BIENVENIDO","ESPERANDO USUARIO:")
 
 	try:
 		while True:
