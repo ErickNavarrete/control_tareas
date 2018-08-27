@@ -1,7 +1,7 @@
 import time
 import MySQLdb
 import os
-import mysql.connector
+
 os.chdir('/home/pi/control_tareas/')
 import lcd
 
