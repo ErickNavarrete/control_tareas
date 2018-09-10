@@ -46,7 +46,6 @@ def get_event():
 			a,b  = codigo.split(".")
 			id_usuario = b
 			origen = "USUARIOS"
-			uso = 0
 		else:
 			id_ot,id_unidad,id_detalle = codigo.split(".")
 			origen = "OT"
@@ -124,6 +123,7 @@ def set_tarea():
 			
 	elif origen == "USUARIOS":
 		mensajes_lcd("USUARIO","IDENTIFICADO","ESPERANDO","DETALLE")
+		uso = 0
 
 if __name__=="__main__":
 	lcd.GPIO.cleanup()
@@ -132,5 +132,13 @@ if __name__=="__main__":
 	try:
 		while True:
 			get_event()
+			try:
+				if uso == 0:
+					cont += 1
+					if con == 1000:
+						mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
+						cont = 0
+			except:
+			
 	except KeyboardInterrupt:
 		pass
