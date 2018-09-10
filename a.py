@@ -62,7 +62,7 @@ def set_tarea():
 		try:
 			if id_usuario == 0 :
 				mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO")
-		except
+		except:
 			mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO")
 			return
 				
