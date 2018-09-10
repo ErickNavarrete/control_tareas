@@ -136,8 +136,8 @@ if __name__=="__main__":
 			try:
 				if uso == 0:
 					cont += 1
-					if con == 1000:
-						
+					print(cont)
+					if con == 1000:					
 						mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
 						cont = 0
 			except:
