@@ -233,7 +233,6 @@ if __name__=="__main__":
 	lcd.GPIO.cleanup()
 	lcd.lcd_init()
 	mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
-
 	try:
 		while True:
 			get_event()
