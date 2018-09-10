@@ -56,9 +56,12 @@ def set_tarea():
 	estado_t = "True"
 	estado = "TERMINADO"
 	
-	print(id_usuario)
 	
 	if origen == "OT":		
+	
+		if id_usuario == 0 :
+			mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO"
+		
 		base()
 		cur = db.cursor()
 		cur.execute("select estado from historial where id_detalle = " + id_detalle + " and id_usuario = " + id_usuario + " and estado <> 'COMPLETADO' ")
@@ -104,8 +107,10 @@ def set_tarea():
 				db.rollback()			
 			db.close()
 			
-
+			
 			mensajes_lcd("TAREA","EN CURSO","ESPERANDO","USUARIO")
+			
+		id_usuario = 0
 			
 	elif origen == "USUARIOS":
 		mensajes_lcd("USUARIO","IDENTIFICADO","ESPERANDO","DETALLE")
