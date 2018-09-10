@@ -72,8 +72,8 @@ def set_tarea():
 			cur = db.cursor()
 			fecha = str(time.strftime("20%y/%m/%d %X"))
 			
-			sql = "update historial set fecha_t = %s , estado = 'COMPLETADO' where id_detalle = %s and id_proceso = %s and estado = 'EN CURSO' "
-			val = (fecha,id_detalle,id_proceso)
+			sql = "update historial set fecha_t = %s , estado = 'COMPLETADO' where id_detalle = %s and estado = 'EN CURSO' "
+			val = (fecha,id_detalle)
 			 
 			try:
 				cur.execute(sql,val)
