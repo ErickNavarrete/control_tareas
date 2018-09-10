@@ -133,11 +133,11 @@ if __name__=="__main__":
 	try:
 		while True:
 			get_event()
-				if uso == 0:
-					cont += 1
-					print(cont)
-					if con == 1000:					
-						mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
-						cont = 0
+			if uso == 0:
+				cont += 1
+				print(cont)
+				if con == 1000:					
+					mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
+					cont = 0
 	except KeyboardInterrupt:
 		pass
