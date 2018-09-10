@@ -63,7 +63,7 @@ def set_tarea():
 		cur = db.cursor()
 		cur.execute("select estado from historial where id_detalle = " + id_detalle + " and id_usuario = " + id_usuario + " and estado <> 'COMPLETADO' ")
 		for row in cur.fetchall():
-			estado = row[2]
+			estado = row[0]
 		db.close()
 									
 		if estado == "EN CURSO":
