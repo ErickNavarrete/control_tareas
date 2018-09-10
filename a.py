@@ -139,6 +139,6 @@ if __name__=="__main__":
 						mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
 						cont = 0
 			except:
-			
+				cont = 0
 	except KeyboardInterrupt:
 		pass
