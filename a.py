@@ -61,7 +61,7 @@ def set_tarea():
 	if origen == "OT":		
 		base()
 		cur = db.cursor()
-		cur.execute("select estado from historial where id_proceso = " + id_proceso + " and id_usuario = " + id_usuario + " and estado <> 'COMPLETADO' ")
+		cur.execute("select estado from historial where id_detalle = " + id_detalle + " and id_usuario = " + id_usuario + " and estado <> 'COMPLETADO' ")
 		for row in cur.fetchall():
 			estado = row[2]
 		db.close()
