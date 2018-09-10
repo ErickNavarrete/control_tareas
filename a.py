@@ -28,6 +28,11 @@ def mensajes_lcd(mensaje1,mensaje2, mensaje3, mensaje4):
 	lcd.lcd_string(mensaje4,2)
 	
 def base():
+	global db
+	db = MySQLdb.connect(host="192.168.15.14",
+			     user="root",
+			     passwd="ZMalqp10",
+			     db="tablero_dmm2")
 
 def get_event():
 	global id_detalle, id_ot, id_usuario, origen
