@@ -1,6 +1,6 @@
 if __name__=="__main__":
 	try:
 		while True:
-			get_event()
+			print("a")
 	except KeyboardInterrupt:
 		pass
