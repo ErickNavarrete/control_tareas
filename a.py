@@ -6,7 +6,7 @@ os.chdir('/home/pi/control_tareas/')
 import lcd
 
 #VARIABLES GLOBALES
-global id_usuario = 0
+global id_usuario
 global id_detalle
 global id_ot
 global uso
@@ -62,8 +62,13 @@ def set_tarea():
 	
 	if origen == "OT":		
 		
-
-		if id_usuario == 0 :
+		try:
+			if id_usuario == 0 :
+				mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO")
+		except:
+			id_usuario = 0
+			
+		if id_usuario == 0:
 			mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO")
 			return
 				
