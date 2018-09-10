@@ -6,9 +6,10 @@ os.chdir('/home/pi/control_tareas/')
 import lcd
 
 #VARIABLES GLOBALES
-global id_usuario
+global id_usuario = 0
 global id_detalle
 global id_ot
+global uso
 global origen
 global mydb
 
@@ -35,7 +36,7 @@ def base():
 			     db="tablero_dmm2")
 
 def get_event():
-	global id_detalle, id_ot, id_usuario, origen
+	global id_detalle, id_ot, id_usuario, origen, uso
 
 	codigo = raw_input()
 
@@ -45,9 +46,11 @@ def get_event():
 			a,b  = codigo.split(".")
 			id_usuario = b
 			origen = "USUARIOS"
+			uso = 0
 		else:
 			id_ot,id_unidad,id_detalle = codigo.split(".")
 			origen = "OT"
+			uso = 1
 		set_tarea()
 		
 def set_tarea():
@@ -59,10 +62,8 @@ def set_tarea():
 	
 	if origen == "OT":		
 		
-		try:
-			if id_usuario == 0 :
-				mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO")
-		except:
+
+		if id_usuario == 0 :
 			mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO")
 			return
 				
