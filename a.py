@@ -92,8 +92,8 @@ def set_tarea():
 			cur = db.cursor()
 			fecha = str(time.strftime("20%y/%m/%d %X"))
 			
-			sql = " insert into historial (id_detalle, id_proceso, id_usuario, estado, fecha) values (%s, %s, %s, 'EN CURSO', %s) "
-			val = (id_detalle,id_proceso,id_usuario,fecha)
+			sql = " insert into historial (id_detalle, id_proceso, id_usuario, estado, fecha) values (%s, '0', %s, 'EN CURSO', %s) "
+			val = (id_detalle,id_usuario,fecha)
 			 
 			try:
 				cur.execute(sql,val)
