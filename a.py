@@ -43,12 +43,12 @@ def get_event():
 	if len(codigo)  > 0:
 		if codigo[:4] == "000.":
 			a,b  = codigo.split(".")
-			print(a)
+			print(b)
 			origen = "USUARIOS"
 		else:
 			id_ot,id_unidad,id_detalle = codigo.split(".")
 			origen = "OT"
-		set_tarea()
+		#set_tarea()
 
 if __name__=="__main__":
 	try:
