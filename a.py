@@ -128,6 +128,7 @@ def set_tarea():
 if __name__=="__main__":
 	global uso
 	uso = 0
+	cont = 0
 	lcd.GPIO.cleanup()
 	lcd.lcd_init()
 	mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
