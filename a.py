@@ -60,7 +60,7 @@ def set_tarea():
 	if origen == "OT":		
 	
 		if id_usuario == 0 :
-			mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO"
+			mensajes_lcd("USUARIO","OBLIGATORIO","ESPERANDO","USUARIO")
 		
 		base()
 		cur = db.cursor()
