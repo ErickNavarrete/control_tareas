@@ -49,13 +49,14 @@ def get_event():
 			id_usuario = b
 			origen = "USUARIOS"
 			fecha = datetime.utcnow()
-			print(fecha)
 		else:
 			id_ot,id_unidad,id_detalle = codigo.split(".")
 			origen = "OT"
 			fecha2 = datetime.utcnow() - fecha
-			print(fecha2)
 			print(fecha2.total_seconds())
+			if fecha2.total_seconds() > 30:
+				mensajes_lcd("SESION","EXPIRADA","ESPERANDO","USUARIO")
+				return
 		set_tarea()
 		
 def set_tarea():
