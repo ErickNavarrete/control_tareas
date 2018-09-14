@@ -9,7 +9,7 @@ import lcd
 global id_usuario
 global id_detalle
 global id_ot
-global uso
+global fecha
 global origen
 global mydb
 
@@ -36,7 +36,7 @@ def base():
 			     db="tablero_dmm2")
 
 def get_event():
-	global id_detalle, id_ot, id_usuario, origen, uso
+	global id_detalle, id_ot, id_usuario, origen, fecha
 
 	codigo = raw_input()
 
@@ -49,7 +49,8 @@ def get_event():
 		else:
 			id_ot,id_unidad,id_detalle = codigo.split(".")
 			origen = "OT"
-			uso = 1
+			fecha = time.gmtime(time.time())
+			print(fecha)
 		set_tarea()
 		
 def set_tarea():
@@ -123,23 +124,13 @@ def set_tarea():
 			
 	elif origen == "USUARIOS":
 		mensajes_lcd("USUARIO","IDENTIFICADO","ESPERANDO","DETALLE")
-		uso = 0
 
 if __name__=="__main__":
-	global uso
-	uso = 0
-	cont = 0
 	lcd.GPIO.cleanup()
 	lcd.lcd_init()
 	mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
 	try:
 		while True:
-			if uso == 0:
-				cont += 1
-				print(cont)
-				if cont == 1000:					
-					mensajes_lcd("BIENVENIDO","","ESPERANDO","USUARIO")
-					cont = 0
 			get_event()
 
 	except KeyboardInterrupt:
