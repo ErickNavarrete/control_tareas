@@ -46,11 +46,11 @@ def get_event():
 			a,b  = codigo.split(".")
 			id_usuario = b
 			origen = "USUARIOS"
+			fecha = time.gmtime(time.time())
+			print(fecha)
 		else:
 			id_ot,id_unidad,id_detalle = codigo.split(".")
 			origen = "OT"
-			fecha = time.gmtime(time.time())
-			print(fecha)
 		set_tarea()
 		
 def set_tarea():
