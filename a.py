@@ -1,6 +1,7 @@
 import time
 import MySQLdb
 import os
+from datetime import datetime
 
 os.chdir('/home/pi/control_tareas/')
 import lcd
@@ -10,6 +11,7 @@ global id_usuario
 global id_detalle
 global id_ot
 global fecha
+global fecha2
 global origen
 global mydb
 
@@ -36,7 +38,7 @@ def base():
 			     db="tablero_dmm2")
 
 def get_event():
-	global id_detalle, id_ot, id_usuario, origen, fecha
+	global id_detalle, id_ot, id_usuario, origen, fecha, fecha2
 
 	codigo = raw_input()
 
@@ -46,11 +48,14 @@ def get_event():
 			a,b  = codigo.split(".")
 			id_usuario = b
 			origen = "USUARIOS"
-			fecha = time.gmtime(time.time())
+			fecha = datetime.utcnow()
 			print(fecha)
 		else:
 			id_ot,id_unidad,id_detalle = codigo.split(".")
 			origen = "OT"
+			fecha2 = datetime.utcnow() - fecha
+			print(fecha2)
+			print(fecha2.total_seconds())
 		set_tarea()
 		
 def set_tarea():
