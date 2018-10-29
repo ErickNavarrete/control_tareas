@@ -35,7 +35,7 @@ def base():
 	db = MySQLdb.connect(host="ave-la.dynns.com",
 			     user="root",
 			     passwd="ZMalqp10",
-			     db="tablero_dmm2")
+			     db="control_dmm")
 
 def get_event():
 	global id_detalle, id_ot, id_usuario, origen, fecha, fecha2
