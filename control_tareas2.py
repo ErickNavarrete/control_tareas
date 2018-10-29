@@ -80,7 +80,7 @@ def set_tarea():
 			
 		base()
 		cur = db.cursor()
-		cur.execute("SELECT ID_PROCESO WHERE ID_DETALLE = " + id_detalle + " ")
+		cur.execute("SELECT ID_PROCESO FROM PROCESO_OT WHERE ID_DETALLE = " + id_detalle + " ")
 		
 		for row in cur.fetchall():
 			tipo_t = "True"
