@@ -32,7 +32,7 @@ def mensajes_lcd(mensaje1,mensaje2, mensaje3, mensaje4):
 	
 def base():
 	global db
-	db = MySQLdb.connect(host="192.168.43.209",
+	db = MySQLdb.connect(host="ave-la.dynns.com",
 			     user="root",
 			     passwd="ZMalqp10",
 			     db="tablero_dmm2")
