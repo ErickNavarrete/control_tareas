@@ -161,10 +161,7 @@ def set_tarea():
 				#VERIFICAMOS SI LA ORDEN DE TRABAJO YA FUE COMPLETADA
 				base()
 				cur = db.cursor()
-				sql = "select estado from proceso_ot where id_detalle = %s "
-				val = (id_detalle)
-				cur.execute(sql,val)
-				
+				cur.execute("select estado from proceso_ot where id_detalle = " + id_detalle + " ")				
 				for row in cur.fetchall():
 					if row[0] <> "TERMINADO":
 						estado_t = "False"					
